@@ -122,13 +122,27 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="DAO\boletaDAO.cs" />
+    <Compile Include="DAO\categoriaDAO.cs" />
     <Compile Include="DAO\conexionDAO.cs" />
+    <Compile Include="DAO\detalleBoletaDAO.cs" />
+    <Compile Include="DAO\direccionDAO.cs" />
+    <Compile Include="DAO\distritoDAO.cs" />
+    <Compile Include="DAO\productoDAO.cs" />
+    <Compile Include="DAO\tarjetaDAO.cs" />
     <Compile Include="DAO\usuarioDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="imagenes\Img.cs" />
+    <Compile Include="Models\Boleta.cs" />
     <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\DetalleBoleta.cs" />
+    <Compile Include="Models\Direccion.cs" />
+    <Compile Include="Models\Distrito.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\Producto.cs" />
+    <Compile Include="Models\Tarjeta.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

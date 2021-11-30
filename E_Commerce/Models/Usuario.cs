@@ -8,20 +8,41 @@ namespace E_Commerce.Models
 {
     public class Usuario
     {
-        public string id { get; set; }
-        public string username { get; set; }
-        [DataType(DataType.EmailAddress)]
-        public string email { get; set; }
-        [DataType(DataType.Password)]
-        public string contraseña { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        [DataType(DataType.PhoneNumber)]
-        public string telefono { get; set; }
+        public string id_usua { get; set; }
+
+        [Display(Name = "dni")]
+        [Required, RegularExpression("^[0-9]{8}$")]
+        public string dni_usua { get; set; }
+        public int id_rol { get; set; }
+
+        [Display(Name = "nombre")]
+        [Required, StringLength(50)]
+        public string nom_usua { get; set; }
+
+        [Display(Name = "apellido")]
+        [Required, StringLength(50)]
+        public string ape_usua { get; set; }
+
+        [Display(Name = "teléfono")]
+        [Required, RegularExpression("^[0-9]{9}$")]
+        public string tel_usua { get; set; }
+
+        [Display(Name = "fecha de nacimiento")]
         [DataType(DataType.Date)]
         [Required, DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public string nacimiento { get; set; }
-        [DataType(DataType.Upload)]
-        public string foto { get; set; }
+        public DateTime fec_nac_usua { get; set; }
+
+        [Display(Name = "usuario")]
+        [Required, StringLength(30)]
+        public string usuario { get; set; }
+
+        [Display(Name = "contraseña")]
+        [Required, StringLength(30)]
+        public string pass { get; set; }
+
+        [Display(Name = "correo")]
+        [Required]
+        public string email_log { get; set; }
+        public int estado { get; set; }
     }
 }

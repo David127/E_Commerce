@@ -74,7 +74,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.foto, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextBox("archivo", "", new { type="file", accept="image/" })
+            @Html.TextBox("archivo", "", new { type = "file", accept = "image/" })
         </div>
     </div>
 
@@ -82,6 +82,10 @@
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />
         </div>
+    </div>
+
+    <div class="form-group" style="width: 100%; padding-left: 15px;">
+        @Html.ActionLink("Iniciar sesión", "Login", null, new { @class = "btn btn-success", @style = "width:45%;margin-left:6px;margin-right:0" })
     </div>
 
     <div class="alert alert-info alert-dismissible show" role="alert">
@@ -96,10 +100,6 @@
     </div>
 </div>
 }
-<!--
-<div>
-    
-</div>-->
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
