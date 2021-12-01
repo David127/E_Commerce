@@ -1,15 +1,19 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecommerce</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" type="image/png" href="https://i.ibb.co/F3CCM91/logo-secondlife.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="@Url.Content("~/Content/E_Commerce.css")" rel="stylesheet" type="text/css" />
+    @using E_Commerce.Models
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top bg1-color">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,13 +21,44 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                <img class="card-img-top img-index" style="width:55px;height:55px;" src="https://i.ibb.co/F3CCM91/logo-secondlife.png" />
+                
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                <ul class="nav navbar-nav" style="padding: 0; float: right !important;">
+                    <li>@Html.ActionLink("Inicio", "Index", "E_Commerce")</li>
+                    <li>@Html.ActionLink("Productos", "Product", "E_Commerce")</li>
+
+                    @{ Usuario u = TempData["usuario"] as Usuario;
+                        int cant = 0;
+                        if (Session["carrito"] != null)
+                        {
+                            foreach (Item i in (List<Item>)Session["carrito"])
+                            {
+                                cant += i.cant;
+                            }
+                        } 
+                     }
+
+                    @if (@u== null)
+                    {
+                        <li> @Html.ActionLink("Inicio de Sesion", "Login", "E_Commerce")</li>
+                    }
+                    else
+                    {
+                        <li style="display:flex">
+                            @Html.ActionLink(" Perfil", "Profile", "E_Commerce", new { id = u.id_usua, estado = true },
+                             new { @class = "bi bi-person", @title = "Perfil de " + @u.nom_usua, @style =" font-size:16px" })
+                        </li>
+                    }
+
+                    <li style=" display: flex; align-items: center; color: #9d9d9d;">
+                        @Html.ActionLink(" ", "Shopping_Cart", "E_Commerce", new { /*Id = item.IDPROJECT */}, 
+                       new { @class = "bi bi-cart3 icon-car", @title = "Carrito",@style =" font-size:16px" })
+                        <span class="num-car" style="font-size:16px">(@cant)</span>
+                    </li>
+
                 </ul>
             </div>
         </div>
@@ -31,7 +66,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+        <footer class="footer">
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
         </footer>
     </div>
